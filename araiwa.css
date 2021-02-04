@@ -1,0 +1,276 @@
+*{ box-sizing: border-box; text-decoration: none; text-align: center; color: hsla(0, 100%, 99% ); }
+body{
+  margin: 0px;
+  background-color: black;
+  font-family: Arial (sans-serif);
+}
+hr{
+  border: 2px solid rgba(45, 81, 92, 0.95);
+}
+.admin{ 
+  display : none;
+}
+select, option{ 
+  background: black; 
+}
+.topic{ 
+  color: gold; 
+}
+textarea{
+  text-align: left;
+  color: black;
+  background: white;
+  resize: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sample{
+  color: yellow;
+}
+.length{
+  color: salmon
+}
+/* top menu & header*/
+.tophead {
+  z-index: 1;
+  top: 0px;
+  width: 100%;
+  height: 55px;
+  position: fixed;
+  background: rgba(45, 81, 92, 0.95);
+}
+.tophead a {
+  float: left;
+  padding: 14px 16px;
+  font-size: 17px;
+  font-size: medium;
+}
+.tophead a:hover {
+  color: black;
+}
+/* highlighted contents */
+
+/* Probably will be used in the future
+.hl{
+  margin-top: 61px;
+  width: 100%;
+  height: 25%;
+  z-index: 1;
+}
+.hlbox{
+  width: 50%;
+  float: left;
+  height: 100%; 
+}
+.hlbox h2{
+  position: absolute;
+}
+.hlbox img{
+  width: 100%;
+  height: 25em;
+}
+*/
+
+/* LMR : GRID - inside LMR there are 3 parts // left, center and right */
+.LMR {
+    width: 90%;
+    margin-left: auto; margin-right: auto;
+    margin-top: 57px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+      'left center right'
+    ;
+}
+/* left */
+.left {
+  grid-area: left;
+  /*position: fixed;*/
+  /*top: 60px;*/
+}
+
+/*CENTER*/
+.center{
+  grid-area: center;
+}
+.center p{
+  text-align: left;
+  margin-left: 5%;
+  margin-right: 5%}
+/* CENTER : cb = contentbox in main pag*/
+.cb{
+  height: auto;
+}
+.cb img{
+  max-width: 75%;
+  max-height: 75%;
+}
+/* CENTER : team & player profile */
+.teammember{
+  height: auto;
+}
+.profilepic{
+  width: 32%;
+  height: 200px;
+  display: inline-block;
+}
+.profilepic img{
+  max-width: 100%;
+  max-height: 100%; 
+}
+.teamtextbox{
+  width: 100%;
+  text-align: center;
+}
+/* infobox (for team, player profile */
+/* matchbox for upcoming match)*/
+
+.infobox{
+  float: left;
+  width: 50%;
+  margin-left: auto; margin-right: auto;
+  height: 115px;
+  background-repeat: no-repeat;
+  filter: grayscale(0%);
+  background-size: cover;
+}
+.infobox p{
+  position: absolute;
+  margin-top: 3px;
+  top: 3px;
+  left: 3px;
+  text-align: left;
+}
+.infobox h3{
+  position: absolute;
+  bottom: -7px;
+  right: 7px;
+}
+.teamlogo{
+  position: absolute;
+  right: -21px;
+}
+.matchbox{
+  height: 135px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows:
+    1fr
+    1fr
+  ;
+  grid-template-areas:
+    'tour tour tour'
+    'team1 score team2' 
+  ;
+  border: 2px solid rgba(45, 81, 92, 0.95);
+}
+.matchbox img{
+  margin-top: -5px;
+  max-width: 65%;
+}
+.tour{
+  grid-area: tour;
+  margin-top: 5px;
+}
+.team1{
+  grid-area: team1;
+  text-align: left;
+  float: left;
+  margin-top: -11px;
+}
+.team1 img{
+    float: left;
+}
+.score{
+  grid-area: score;
+}
+.team2{
+  grid-area: team2;
+  text-align: right;
+  float: right;
+  margin-top: -11px;
+}
+.team2 img{
+    float:right;
+}
+.green{
+  color: greenyellow;
+}
+/*right side*/
+.right{
+  grid-area: right;
+  position: fixed;
+  top: 65px;
+  right: 75px;
+}
+/*Log-in page*/
+input{
+  color: black;
+  background: #94a9b5;}
+button{
+  color: black;
+  font-size: medium;
+}
+.datetimeInput{
+  background: white;
+}
+
+/* responsive naja */
+@media only screen and (max-width: 1366px) {
+  .tophead a {width: 33.3%;}
+  .name{display: none; padding: 0px}
+  .hl{grid-area: hl;}
+  .hlbox{width: 100%;}
+  .infobox{width: 49.5%; display: inline-block}
+  .center {font-size: 95%;}
+  .center img{ max-width: 95% ; margin-left: auto; margin-right: auto;}
+  .LMR {
+      width: 100%;
+    grid-template-columns: 1fr; 
+    grid-template-areas:
+      /*'hl'*/
+      'left'
+      'center'
+      'right'
+    ;
+  }
+  /*.left{*/
+  /*    position: relative;*/
+  /*    top: 0px;*/
+  /*}*/
+}
+
+.public{
+    display: inline;
+}
+.delete{
+    float:right;
+    margin-top: 45px;
+    margin-right: -35px;
+}
+.idcontent{
+    color: red; display:none;
+}
+/* 
+Probably will be used in the future
+
+.flip-card {
+  background-color: transparent;
+}
+.flip-card-inner {
+  width: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.flip-card-back {
+  transform: rotateY(180deg); 
+}
+*/
