@@ -3,7 +3,7 @@
     $userId = $_POST['userId'];
     $userName = $_POST['userName'];
     $pwd = $_POST['pwd'];
-  
+  // just mock-up loging information
   if($userId == 0 && $userName == "" && $pwd == "") {
 
     $_SESSION['adminid'] = 32;
@@ -13,7 +13,7 @@
     }
     header('Location: index.php');
   }
-
+    // just mock-up loging information
   else if($userId !=  0 || $userName != "" || $pwd != ""){
 
     $_SESSION['loginfail'] = "ล็อคอินไม่สำเร็จ ใส่รหัสไม่ถูกต้อง";
