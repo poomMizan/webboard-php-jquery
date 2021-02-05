@@ -164,6 +164,7 @@ document.querySelectorAll('.reset').forEach((resetbtn, index) => {
 // 1 = public // match detail is visible on the index page
 // 0 = non public // match detail is invisible 
 
+<<<<<<< HEAD
 function check_match_status(status){
   if(status == "1") return "Public";
   if(status == "0") return "None public";
@@ -192,3 +193,21 @@ document.querySelectorAll('.status').forEach((status, index) => {
     }
   });
 });
+=======
+// document.querySelectorAll('.status').forEach((status, index) => {
+  
+//   status.innerHTML = (status.innerHTML == 1) ? "public": "none public";
+  
+//   $(status).click(()=>{
+
+//     if(confirm("ต้องการเปลี่ยน Match Status ใช่หรือไม่ ?")){
+//       $.post(
+//         "update_score_db.php",
+//         {matchstatus: 1, match_id: matchid[index].value},
+//         ()=>{
+//         }
+//       );
+//     }
+//   });
+// });
+>>>>>>> 80495134adcb88c98220aa3a9da329a9ce13d601
