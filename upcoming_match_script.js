@@ -115,7 +115,7 @@ function updateScore(btn, team, matchid){
 
       if(confirm('ต้องการ Update Score ของทีม หรือไม่')){
         $.ajax({
-          url: 'update_score.php',
+          url: 'update_score_db.php',
           type: 'post',
           data: {
             score: team,
@@ -146,7 +146,7 @@ document.querySelectorAll('.reset').forEach((resetbtn, index) => {
   $(resetbtn).click(()=>{
     if(confirm("ต้องการ RESET SCORE ใช่หรือไม่ ?")){
       $.post(
-        "update_score.php",
+        "update_score_db.php",
         {score: "", match_id: matchid[index].value},
         (result)=>{
           alert(result);
@@ -164,17 +164,29 @@ document.querySelectorAll('.reset').forEach((resetbtn, index) => {
 // 1 = public // match detail is visible on the index page
 // 0 = non public // match detail is invisible 
 
+function check_match_status(status){
+  if(status == "1") return "Public";
+  if(status == "0") return "None public";
+}
+
 document.querySelectorAll('.status').forEach((status, index) => {
-  
-  status.innerHTML = (status.innerHTML == 1) ? "public": "none public";
-  
+  let newStatus = (status.innerHTML == 1) ? 0: 1; 
+
+  status.innerHTML = check_match_status(status.innerHTML);  
+
   $(status).click(()=>{
 
     if(confirm("ต้องการเปลี่ยน Match Status ใช่หรือไม่ ?")){
+      alert(newStatus);
       $.post(
         "update_score_db.php",
-        {matchstatus: 1, match_id: matchid[index].value},
-        ()=>{
+        {matchstatus: newStatus, matchid: matchid[index].value},
+        (result)=>{
+          alert(result);
+          $(status).fadeOut(777, ()=>{         
+            $(status).html(check_match_status(newStatus)).fadeIn().delay(777);
+            newStatus = (newStatus == 1) ? 0: 1;
+          });
         }
       );
     }

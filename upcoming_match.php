@@ -13,7 +13,7 @@
   INNER JOIN Team T1 ON M.team1 = T1.teamid
   INNER JOIN Team T2 ON M.team2 = T2.teamid
   {$sqlAdmin}
-  ORDER BY M.matchtime ASC;";
+  ORDER BY M.matchstatus AND M.matchtime DESC;";
 ?>
 <div id="match">
 <?php
@@ -26,10 +26,10 @@ while ($result = mysqli_fetch_array($query)) {
     <input class="bo" type="hidden" value="<?php echo $result['bo'];?>">
 
     <div class="tour">
-      <?php echo $result['tourname']; ?>   
+      <span style="color: orange"> <?php echo $result['tourname']; ?> </span>   
       <br>  
-      <span class="times"><?php echo $result['matchtime']; ?></span>
-
+      <span class="times"><?php echo $result['matchtime']; ?></span><br>
+      <span style="color: blue"><?php echo $result['matchtime']; ?></span>
       <br>
       <input 
 						name="editTime" class="editTime admin" type="datetime-local"
@@ -78,4 +78,7 @@ while ($result = mysqli_fetch_array($query)) {
 }
 ?>
 </div>
+<!-- <h1 id="matchFinsih">Click to see match result</h1> -->
+
+
 <script src="upcoming_match_script.js"> </script>
