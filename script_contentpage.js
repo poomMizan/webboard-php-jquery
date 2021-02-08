@@ -13,7 +13,7 @@ function timeOutput(time){
   let month = monthNames[d.getMonth()];
   let hour = checkTime(d.getHours());
   let min = checkTime(d.getMinutes())
-  return `${d.getDate()} ${month} ${d.getFullYear()} เวลา ${hour} ${min}`;
+  return `${d.getDate()} ${month} ${d.getFullYear()} เวลา ${hour}:${min}`;
 }
 
 document.querySelectorAll('.normaltime').forEach( (time)=> {
