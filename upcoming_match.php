@@ -31,7 +31,7 @@ while ($result = mysqli_fetch_array($query)) {
       <span style="color: grey"> <?php echo $result['tourname']; ?> </span>   
       <br>  
       <span style="color: skyblue" class="times"><?php echo $result['matchtime']; ?></span><br>
-      <span style="color: grey"><?php echo $result['matchtime']; ?></span>
+      <span style="color: grey" class="normaltime"><?php echo $result['matchtime']; ?></span>
       <br>
       <input 
 						name="editTime" class="editTime admin" type="datetime-local"
@@ -82,5 +82,5 @@ while ($result = mysqli_fetch_array($query)) {
 </div>
 <!-- <h1 id="matchFinsih">Click to see match result</h1> -->
 
-
-<script src="upcoming_match_script.js"> </script>
+<script src="script_contentpage.js"></script>
+<script src="upcoming_match_script.js"></script>
