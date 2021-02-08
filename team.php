@@ -24,10 +24,19 @@
   $countryname = $result['countryname'];
   $earning2021	= $result['earning2021'];
   $teamid = $result['teamid'];
+  $logo = $result['logo'];
+  $text1 = $result['text1'];
   ?>
 <div class="LMR">
 <div class=left>
-
+<?php
+  require_once('upcoming_match.php');
+  $sqlAdmin = "WHERE approve = 0";
+  if ( isset($_SESSION['adminid'])){
+    $sqlAdmin = "";
+    require_once('add_match.php');
+  }
+?>
 </div>
 <div class="center">
     <h1> 
@@ -35,13 +44,13 @@
   </h1>
   <br>
   <!-- Team Logo -->
-  <img src="/team/<?php echo $result['logo']; ?>">
-  <br>
-  <div class="teamtextbox"> <!-- Team info-->
-    <?php echo $result['text1']; ?>
+  <img src="/team/<?php echo $logo ?>">
   <br>
   <br>
-  </div>
+    <p style="text-align:center"><?php echo $text1 ?></p>
+  <br>
+  <br>
+
   <div class="teammember">
     <h2>
       <?php echo "สมาชิกทีม ชุดปัจจุบัน"; ?>
@@ -86,42 +95,48 @@
     } 
     ?>
     </div><!--END teammember-->
-    <hr>
     <br>
-    <div class="infobox">
+    <div class="infobox" style='background-image: url("/picweb/team.jpg")'>
       <p>ชื่อทีม</p>
       <h3> 
         <?php echo $teamname; ?>
       </h3>
     </div>
 
-    <div class="infobox ">
+    <div class="infobox" style='background-image: url("/picweb/age.jpg")'>
       <p>วันที่ก่อตั้งทีม</p>
     <h3>
       <?php echo $createdate; ?>
     </h3>
     </div>
 
-    <div class="infobox">
+    <div class="infobox" style='background-image: url("/picweb/country.jpg")'>
       <p>ประเทศ</p><h3><?php echo $countryname; ?></h3>
     </div>
 
-    <div class="infobox">
+    <div class="infobox" style='background-image: url("/picweb/totalearning.jpg")'>
       <p>เงินราลวัลสะสมในปี 2021</p> 
       <h3><?php echo getPrize($earning2021); ?></h3> 
     </div>    
 
   <br>
   <br>
-  <div class="creditbox">
-
-  </div>  
 
 </div><!--END center-->  
 <div class="right">
 <?php 
+  include("league_table.php");
   if ( isset($_SESSION['adminid'])){
      require_once("adminMode.php");
+?>  
+<script> 
+  $(function(){
+    $('.edit').click(()=>{
+      $('.admin').show(777);
+    });
+  });
+</script>
+<?php
   }
 ?>
 </div>
@@ -146,6 +161,9 @@
     });
   });
 </script>
-<?php  } ?>
+<?php  } 
+
+  mysqli_close($conn);
+?>
 </body>
 </html>

@@ -35,11 +35,17 @@
   }  
 ?>
 <div class='LMR'>
+<div class="left">
 <?php
-    if ( isset($_SESSION['adminid'])){
-      require_once("adminMode.php");
-   }
+  require_once('upcoming_match.php');
+  $sqlAdmin = "WHERE approve = 0";
+  if ( isset($_SESSION['adminid'])){
+    $sqlAdmin = "";
+    require_once('add_match.php');
+  }
+      
 ?>
+</div>
 <div class="center">
     <br>
     <h1>
@@ -51,17 +57,15 @@
     <br>      
   <div class="teamtextbox">
     <br>
-    <hr>
-    <br>
    <?php echo $text1; ?>
   </div> <!--END teamtextbox-->
 
-  <div class="infobox">
+  <div class="infobox" style="background-image: url('/picweb/name.jpg')">
     <p>ชื่อ</p> 
     <h3><?php echo $fullname; ?></h3> 
   </div>
 
-  <div class="infobox">
+  <div class="infobox" style="background-image: url('/picweb/tinker.jpg'); padding: 9px">
     <p>ทีมในสังกัด</p>
     <img class="teamlogo" src="team/<?php echo $slogo ?>">
     <a href="team.php?teamname=<?php echo $teamname?>">
@@ -71,44 +75,56 @@
           if($teamname == "No Team"){
                echo "ขณะนี้ยังไม่มีทีมในสังกัด";
           }
-          else echo $result['teamname']; 
+          else echo $teamname; 
         ?>
       </h3>
     </a> 
   </div>
 
-  <div class="infobox">
+  <div class="infobox" style="background-image: url('/picweb/role.jpg')">
     <p>ตำแหน่ง</p> 
     <h3><?php echo checkRole($roles); ?></h3> 
   </div>
   
-  <div class="infobox">
+  <div class="infobox" style="background-image: url('/picweb/country.jpg')">
     <p>ประเทศ</p> 
     <h3><?php echo $countryname; ?></h3> 
   </div>
 
-  <div class="infobox">
+  <div class="infobox" style="background-image: url('/picweb/age.jpg')">
     <p>อายุ</p> 
     <h3><?php echo getAge($birth); ?></h3>
   </div>
 
-  <div class="infobox">
+  <div class="infobox" style="background-image: url('/picweb/totalearning.jpg')">
     <p>เงินรางวัลสะสมในปี 2021</p> 
     <h3><?php echo getPrize($earning2021); ?></h3> 
-  </div>
-
-  <div class="creditbox">
   </div>
 
 </div>
 
 <div class="right">
+<?php
+  include("league_table.php");
+  if ( isset($_SESSION['adminid'])){
+    
+    include("adminMode.php");   
+?>  
+<script> 
+  $(function(){
+    $('.edit').click(()=>{
+      $('.admin').show(777);
+    });
+  });
+
+<?php
+  }
+  mysqli_close($conn);
+?>
+</script>
 </div> 
 
 </div> <!--end LMR-->
 
 </body> 
 
-<?php
-  mysqli_close($conn);
-?>

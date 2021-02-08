@@ -1,7 +1,19 @@
 <?php
+    session_start();
     require_once("headtop.php");    
 ?>
 <div class="LMR">
+<div class="left">
+
+<?php
+  require_once('upcoming_match.php');
+  $sqlAdmin = "WHERE approve = 0";
+  if ( isset($_SESSION['adminid'])){
+    $sqlAdmin = "";
+    require_once('add_match.php');
+  }
+?>  
+</div>
 <?php
     $sqlAdmin = "WHERE approve = 0";
     if (isset($_SESSION['adminid'])){
@@ -47,14 +59,23 @@
 </div>
 <div class="right">
 <?php
-    if (isset($_SESSION['adminid'])){
-       require_once('adminMode.php');
-    }
+      include("league_table.php");
+  if ( isset($_SESSION['adminid'])){
+    
+    include("adminMode.php");   
+?>  
+<script> 
+  $(function(){
+    $('.edit').click(()=>{
+      $('.admin').show(777);
+    });
+  });
+</script>
+<?php 
+  }    
+  mysqli_close($conn);
 ?>
 </div>
 </div>
 </body>
 </html>
-<?php
-    mysqli_close($conn);
-?>

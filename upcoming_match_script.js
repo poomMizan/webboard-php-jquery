@@ -13,7 +13,8 @@ function checkTime(time, index){
       if (diff < 0) {
         clearInterval(stop);
         matchscores[index].style.color = "greenyellow";
-        $(time).css("color", "darkorange").text("Match finished");
+        $(time).css("color", "darkorange").text("LIVE");
+        matchscores[index].innerHTML = " 0 : 0 ";
         return;
       }
       
@@ -93,8 +94,10 @@ function checkScore(score){
   }
 
   if(team_1_score == 0 && team_2_score == 0){
-    return " - : - ";
-  } else {
+    return "";
+  } 
+  
+  else {
     return team_1_score + " : " + team_2_score;
   }
 }
@@ -192,3 +195,25 @@ document.querySelectorAll('.status').forEach((status, index) => {
     }
   });
 });
+
+function checkNormalTime(time){
+  if(time < 10){
+      return "0" + time;
+  }
+  return time;
+}
+function timeOutput(time){  
+  let monthNames = [
+    "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+    "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+  ];  
+  let d = new Date(time);
+  let month = monthNames[d.getMonth()];
+  let hour = checkNormalTime(d.getHours());
+  let min = checkNormalTime(d.getMinutes())
+  return `${d.getDate()} ${month} ${d.getFullYear()} เวลา ${hour}:${min}`;
+}
+
+document.querySelectorAll('.time').forEach( (time)=> {
+    time.innerHTML =  timeOutput(time.innerHTML);
+})

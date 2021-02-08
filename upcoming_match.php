@@ -1,7 +1,8 @@
 <?php
-
   session_start();
-  
+?>
+  <h3>Upcoming Match</h3>
+<?php  
   $sqlAdmin = "WHERE matchstatus = 1"; //   
   //if(isset($_SESSION['adminid'])) { $sqlAdmin = "";}
   
@@ -17,21 +18,22 @@
   WHERE matchstatus = 1
   ORDER BY M.matchtime ASC LIMIT 10;";
 ?>
-<div id="match">
+<div id="match" >
 <?php
 $query = mysqli_query($conn,$sql);
 while ($result = mysqli_fetch_array($query)) {
 ?>
-  <div class="matchbox" <?php if($sqlAdmin =""){echo "style='height: 185px;'";}?>>
-
+  <div class="matchbox" 
+  style='background-image: url("/picweb/matchinfo.jpg");<?php if($sqlAdmin =""){echo "height: 185px;";}?>>'>
+  
     <input class="matchid" type="hidden" value="<?php echo $result['matchid']; ?>">
     <input class="bo" type="hidden" value="<?php echo $result['bo'];?>">
 
     <div class="tour">
-      <span style="color: grey"> <?php echo $result['tourname']; ?> </span>   
+      <span style="color: grey"><?php echo $result['tourname']; ?> </span>   
       <br>  
       <span style="color: skyblue" class="times"><?php echo $result['matchtime']; ?></span><br>
-      <span style="color: grey" class="normaltime"><?php echo $result['matchtime']; ?></span>
+  <!-- <span style="color: grey" class="time"> <?php /*echo $result['matchtime']; */?></span> -->    
       <br>
       <input 
 						name="editTime" class="editTime admin" type="datetime-local"
@@ -40,7 +42,7 @@ while ($result = mysqli_fetch_array($query)) {
       <button class="btnEditTime admin">Change Time</button>
     </div> 
 
-    <div class="team1">
+    <div class="team1" style="text-align: left">
       <a href="team.php?team=<?php echo $result['teamname1']; ?>">
         <img src="team/<?php echo $result['team1slogo'];?>">
         <br>
@@ -64,7 +66,7 @@ while ($result = mysqli_fetch_array($query)) {
             
     </div>
 
-    <div class="team2">
+    <div class="team2" style="text-align: right">
       <a href="team.php?team=<?php echo $result['teamname2']; ?>">
         <img src="team/<?php echo $result['team2slogo']; ?>">
         <br>
@@ -82,5 +84,4 @@ while ($result = mysqli_fetch_array($query)) {
 </div>
 <!-- <h1 id="matchFinsih">Click to see match result</h1> -->
 
-<script src="script_contentpage.js"></script>
 <script src="upcoming_match_script.js"></script>

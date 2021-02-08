@@ -1,15 +1,14 @@
 <div>
-<h2>League Table</h2>
+<h3>League Table</h3>
 
-<table style="color : grey">
-<tr>
-    <th>ลำดับที่</th>
-    <th>ทีม</th>
-    <th>ชนะ</th>
-    <th>แพ้</th>
-</tr>
+<table>
+    <tr>
+      <th colspan="7">
+        <span style="color: grey;">Dota Pro Circuit 2021 Season 1 - Southeast Asia Upper Division</span>
+      </th>
+    </tr>
 <?php
-  $sql = "SELECT teamname, s_win, s_lose, g_win, g_lose
+  $sql = "SELECT teamname, s_win, s_lose, g_win, g_lose, slogo
           FROM Leauge, Team 
           WHERE tourid = 1 AND Leauge.teamid = Team.teamid 
           ORDER BY s_win DESC; ";
@@ -21,7 +20,8 @@
   while ($result = mysqli_fetch_array($query)){?>
     <tr>
       <td class="ranks"> <?php echo $i++?></td>
-      <td class="ranks"> <?php echo $result['teamname'] ?></td>
+      <td> <img style="width: 65%" src="/team/<?php echo $result['slogo']?>"></td>
+      <td class="ranks" colspan="2"> <?php echo $result['teamname'] ?></td>
       <td class="ranks"> <?php echo $result['s_win'] ?></td>
       <td class="ranks">  <?php echo $result['s_lose'] ?></td> 
     </tr>

@@ -6,7 +6,7 @@ body{
   font-size: large;
 }
 hr{
-  border: 2px solid rgba(45, 81, 92, 0.95);
+  border: 1px solid rgba(45, 81, 92, 0.95);
 }
 .admin{ 
   display : none;
@@ -33,13 +33,16 @@ textarea{
 }
 
 table {
-  border: 1px solid rgba(132, 139, 33, 0.95);
-  /* border: 1px solid rgba(45, 81, 92, 0.95); */
+  border: 2px solid rgba(45, 81, 92, 0.95);
 }
 
 th, td {
-  padding: 15px;
+  padding: 17px;
 }
+
+th { color : violet }
+
+p {color: silver}
 
 /* top menu & header*/
 .tophead {
@@ -107,12 +110,14 @@ th, td {
 .center p{
   text-align: left;
   margin-left: 5%;
-  margin-right: 5%}
-/* CENTER : cb = contentbox in main pag*/
+  margin-right: 5%
+}
+  
+/* CB = contentbox in main pag*/
 .cb{
   height: auto;
 }
-.cb img{
+.cb img, .contentpic{
   max-width: 75%;
   max-height: 75%;
 }
@@ -120,9 +125,6 @@ th, td {
 .topic{ text-align: center}
 
 /* CENTER : team & player profile */
-.teammember{
-  height: auto;
-}
 
 .profilepic{
   width: 32%;
@@ -133,10 +135,7 @@ th, td {
   max-width: 100%;
   max-height: 100%; 
 }
-.teamtextbox{
-  width: 100%;
-  text-align: center;
-}
+
 /* infobox (for team, player profile */
 /* matchbox for upcoming match)*/
 
@@ -146,7 +145,7 @@ th, td {
   margin-left: auto; margin-right: auto;
   height: 115px;
   background-repeat: no-repeat;
-  filter: grayscale(0%);
+  filter: grayscale(25%);
   background-size: cover;
 }
 .infobox p{
@@ -166,6 +165,8 @@ th, td {
   right: -21px;
 }
 .matchbox{
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 155px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -189,8 +190,6 @@ th, td {
 }
 .team1{
   grid-area: team1;
-  text-align: left;
-  float: left;
   margin-top: -11px;
 }
 .team1 img{
@@ -201,8 +200,6 @@ th, td {
 }
 .team2{
   grid-area: team2;
-  text-align: right;
-  float: right;
   margin-top: -11px;
 }
 .team2 img{
@@ -214,8 +211,6 @@ th, td {
 /*right side*/
 .right{
   grid-area: right;
-  postion: fixed;
-  right: 35px;
 }
 /*Log-in page*/
 input{
@@ -228,7 +223,6 @@ button{
   background: white;
 }
 
-/* responsive naja */
 @media only screen and (max-width: 1366px) {
     body {font-size: medium}
   .tophead a {width: 33.3%;}
@@ -237,7 +231,6 @@ button{
   .hlbox{width: 100%;}
   .infobox{width: 49.5%; display: inline-block}
   .center img{ max-width: 95% ; margin-left: auto; margin-right: auto;}
-  .right { position: relative}
   table {width: 100%}
   .LMR {
       width: 100%;
@@ -249,10 +242,6 @@ button{
       'right'
     ;
   }
-  /*.left{*/
-  /*    position: relative;*/
-  /*    top: 0px;*/
-  /*}*/
 }
 
 .public{

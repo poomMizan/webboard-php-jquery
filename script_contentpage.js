@@ -16,6 +16,6 @@ function timeOutput(time){
   return `${d.getDate()} ${month} ${d.getFullYear()} เวลา ${hour}:${min}`;
 }
 
-document.querySelectorAll('.normaltime').forEach( (time)=> {
+document.querySelectorAll('.time').forEach( (time)=> {
     time.innerHTML =  timeOutput(time.innerHTML);
 })
