@@ -4,7 +4,7 @@
 ?>
 <div class='LMR'>
 <div class="left">
-  <h1 class="edit">Upcoming Match</h1>
+  <h2 class="edit">Upcoming Match</h2>
 <?php
   require_once('upcoming_match.php');
   $sqlAdmin = "WHERE approve = 0";
@@ -16,7 +16,7 @@
 ?>
 </div>
 <div class="center">
-    <h1 class=edit>News Update</h1>
+    <h2 class=edit>News Update</h2>
 <?php 
 
   $sql = " SELECT idcontent, topic, pic1, text0, approve
@@ -39,7 +39,7 @@
             <?php echo $result['approve']?>
           </h3>
         </a>
-        
+
         <a class="admin" href="create_content.php?content=<?php echo $result['idcontent']?>"
             style="float:right;">          
           <h3 style="display: inline; color: yellow">แก้ไข</h3>
@@ -50,7 +50,7 @@
             <span class="idcontent"><?php echo " ".$result['idcontent'];?></span>
           </h3>
         </a>
-      
+        
         <a href="contentpage.php?content=<?php echo $result['idcontent']?>">
           <h2 class="topic" ><?php echo $result["topic"]; ?></h2>
           <img src="pic/<?php echo $result['pic1']; ?>" alt="รูปประกอบ">
@@ -73,8 +73,10 @@
 
 <div class="right">
 <?php
+  include("league_table.php");
   if ( isset($_SESSION['adminid'])){
-    include("adminMode.php");
+    
+    include("adminMode.php");   
 ?>  
 <script> 
   $(function(){

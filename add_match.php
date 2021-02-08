@@ -70,27 +70,13 @@ $(function(){
   })
 
   $('#addMatchBtn').click(()=>{
-       
-    // if ( $('.1 option:selected').val() == $('.2 option:selected')){
-    //   alert("Team 1 และ Team 2 เป็นทีมเดียวกัน");
-    //   event.preventDefault(event);
-    // }
-    // if( 
-    //     $('.1 option:selected').val() == 0 || 
-    //     $('.2 option:selected').val() == 0 ||
-    //     $('.selectTour option:selected').val(event) == 0 ||
-    //     $('.bo option:selected') == 0
-    //   )
-    // {
-    //   alert("ใส่ข้อมูลไม่ครบ กรุณาตรวจสอบ");
-    //   event.preventDefault(event);
-    // }
     
     $.ajax({
-      url: 'add_more_match_db.php',
+      url: 'add_match_db.php',
       type: "POST",
       data: $('form').serializeArray(),
       success: (result) => {
+        alert("เพิ่ม match สำเร็จ")
         $('#match').fadeOut(777,()=>{
           $('#match').append(result);
           $('#match').fadeIn().delay(777);
@@ -98,6 +84,8 @@ $(function(){
       }
     });
   });
+
+
 });
 
 </script>

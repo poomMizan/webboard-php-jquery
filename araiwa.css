@@ -3,6 +3,7 @@ body{
   margin: 0px;
   background-color: black;
   font-family: Arial (sans-serif);
+  font-size: large;
 }
 hr{
   border: 2px solid rgba(45, 81, 92, 0.95);
@@ -30,6 +31,16 @@ textarea{
 .length{
   color: salmon
 }
+
+table {
+  border: 1px solid rgba(132, 139, 33, 0.95);
+  /* border: 1px solid rgba(45, 81, 92, 0.95); */
+}
+
+th, td {
+  padding: 15px;
+}
+
 /* top menu & header*/
 .tophead {
   z-index: 1;
@@ -73,7 +84,7 @@ textarea{
 
 /* LMR : GRID - inside LMR there are 3 parts // left, center and right */
 .LMR {
-    width: 90%;
+    width: 85%;
     margin-left: auto; margin-right: auto;
     margin-top: 57px;
     display: grid;
@@ -105,10 +116,14 @@ textarea{
   max-width: 75%;
   max-height: 75%;
 }
+
+.topic{ text-align: center}
+
 /* CENTER : team & player profile */
 .teammember{
   height: auto;
 }
+
 .profilepic{
   width: 32%;
   height: 200px;
@@ -151,7 +166,7 @@ textarea{
   right: -21px;
 }
 .matchbox{
-  height: 135px;
+  height: 155px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows:
@@ -199,9 +214,8 @@ textarea{
 /*right side*/
 .right{
   grid-area: right;
-  position: fixed;
-  top: 65px;
-  right: 75px;
+  postion: fixed;
+  right: 35px;
 }
 /*Log-in page*/
 input{
@@ -209,7 +223,6 @@ input{
   background: #94a9b5;}
 button{
   color: black;
-  font-size: medium;
 }
 .datetimeInput{
   background: white;
@@ -217,13 +230,15 @@ button{
 
 /* responsive naja */
 @media only screen and (max-width: 1366px) {
+    body {font-size: medium}
   .tophead a {width: 33.3%;}
   .name{display: none; padding: 0px}
   .hl{grid-area: hl;}
   .hlbox{width: 100%;}
   .infobox{width: 49.5%; display: inline-block}
-  .center {font-size: 95%;}
   .center img{ max-width: 95% ; margin-left: auto; margin-right: auto;}
+  .right { position: relative}
+  table {width: 100%}
   .LMR {
       width: 100%;
     grid-template-columns: 1fr; 

@@ -1,8 +1,10 @@
 <?php
 
   session_start();
+  
   $sqlAdmin = "WHERE matchstatus = 1"; //   
-  if(isset($_SESSION['adminid'])) { $sqlAdmin = "";}
+  //if(isset($_SESSION['adminid'])) { $sqlAdmin = "";}
+  
   $sql = "SELECT T.tourname, M.matchtime, M.score, M.matchid, M.bo, M.matchstatus,
   T1.teamname AS teamname1,
   T1.slogo AS team1slogo,
@@ -12,8 +14,8 @@
   INNER JOIN Tournament T ON T.tourid = M.tourid
   INNER JOIN Team T1 ON M.team1 = T1.teamid
   INNER JOIN Team T2 ON M.team2 = T2.teamid
-  {$sqlAdmin}
-  ORDER BY M.matchstatus AND M.matchtime DESC;";
+  WHERE matchstatus = 1
+  ORDER BY M.matchtime ASC LIMIT 10;";
 ?>
 <div id="match">
 <?php
@@ -26,10 +28,10 @@ while ($result = mysqli_fetch_array($query)) {
     <input class="bo" type="hidden" value="<?php echo $result['bo'];?>">
 
     <div class="tour">
-      <span style="color: orange"> <?php echo $result['tourname']; ?> </span>   
+      <span style="color: grey"> <?php echo $result['tourname']; ?> </span>   
       <br>  
-      <span class="times"><?php echo $result['matchtime']; ?></span><br>
-      <span style="color: blue"><?php echo $result['matchtime']; ?></span>
+      <span style="color: skyblue" class="times"><?php echo $result['matchtime']; ?></span><br>
+      <span style="color: grey"><?php echo $result['matchtime']; ?></span>
       <br>
       <input 
 						name="editTime" class="editTime admin" type="datetime-local"

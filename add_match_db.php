@@ -11,7 +11,7 @@ $sql = "INSERT INTO Matches
             bo,
             score)
       VALUES (
-            '0',
+            '1',
             '".$_POST['tourid']."',
             '".$_POST['matchtime']."',
             '".$_POST['team1']."',
@@ -51,8 +51,8 @@ if($query){
       
             <br>
             <input 
-                                          name="editTime" class="editTime admin" type="datetime-local"
-                                          style="background: white;" 
+                  name="editTime" class="editTime admin" type="datetime-local"
+                  style="background: white;" 
             >
             <button class="btnEditTime admin">Change Time</button>
             </div> 
