@@ -1,9 +1,9 @@
-# DOTA
+# mini project WEDBOARD แบบง่ายๆ  PHP + jquery
  
 # update november 2021
 ถ้ามีเวล่าว่างจะทำ version 2 ที่เป็น vue.js + laravel แทน :)
 
-มินิโปรเจ็ค เว็ปข่าวดอทเอ ที่แอดมินสามารถ create, edit, delete, hide & show คอนเทนต์ข่าว, ข้อมูลทีม & ผู้เล่น, แมตช์การแข่งขัน)
+มินิโปรเจ็ค เว็ปบอร์ด ที่แอดมินสามารถ create, edit, delete, hide & show คอนเทนต์ข่าว, ข้อมูลทีม & ผู้เล่น, แมตช์การแข่งขัน)
 
 เป็นโปรเจ็คตัวแรกที่ได้ลองทำ ใช้ HTML, CSS, PHP, MySQL, JavaScript, jQuery และ AJAX 
 หลายๆส่วนยังไม่สมบูรณ์ โดยเฉพาะส่วนของ admin ที่ใช้สำหรับจัดการคอนเทนต์ต่างๆ 
